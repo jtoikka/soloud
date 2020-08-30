@@ -15,7 +15,7 @@ let package = Package(
   ],
   targets: [
     .target(
-      name: "SoLoudC",
+      name: "SoLoudCpp",
       dependencies: [],
       path: ".",
       exclude: [
@@ -41,9 +41,15 @@ let package = Package(
         "src/backend/wasapi/soloud_wasapi.cpp",
         "src/backend/winmm/soloud_winmm.cpp",
         "src/backend/xaudio2/soloud_xaudio2.cpp",
+        "src/c_api",
         "src/tools",
       ],
       cxxSettings: [CXXSetting.define("WITH_MINIAUDIO")]
     ),
+    .target(
+      name: "SoLoudC",
+      dependencies: ["SoLoudCpp"],
+      path: "src/c_api"
+    )
   ]
 )
